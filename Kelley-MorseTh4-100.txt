@@ -1,11 +1,4 @@
-Last login: Sun Feb 20 17:17:33 on ttys002
-
-The default interactive shell is now zsh.
-To update your account to use zsh, please run `chsh -s /bin/zsh`.
-For more details, please visit https://support.apple.com/kb/HT208050.
-owls-Air:~ owl$ cd Desktop
-owls-Air:Desktop owl$ cd PyLog
-owls-Air:PyLog owl$ python3.9 -i proofenvironment.py
+$ python3.9 -i proofenvironment.py
 
 Welcome to PyLog 1.0
 
