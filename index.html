@@ -113,9 +113,19 @@
 10. (Nat(n) & Nat(m)) -> ((m < (n + 1)) <-> ((m < n) v (m = n))) 
 11. (x ε X) -> (Nat(x) & Set(X)) 
 12. ((0 ε X) & ∀n.((n ε X) -> ((n + 1) ε X))) -> ∀n.(n ε X) 
+
+n ε { x: form(x)}
+-----------------
+Nat(n) & form(n)
+
+
+Nat(n) & form(n)
+-----------------
+n ε { x: form(x)}
+
 </pre>
 </p><p>
-The <i>comprehension scheme</i> is converted into two <i>rules</i> similar
+The <i>comprehension scheme</i> is converted into the two <i>rules</i> above which are similar
 to ClassElim and ClassInt used to formalise Kelley-Morse set theory. Example
 of a simple proof:
 <pre style="font-family:'Courier New'; font-size:15px">
