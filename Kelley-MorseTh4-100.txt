@@ -10871,4 +10871,4 @@ Used Theorems
 2. (OrderPreserving(f,r,s) & (OrderPreserving(g,r,s) & (Section(r,x,domain(f)) & (Section(r,x,domain(g)) & (Section(s,y,range(f)) & Section(s,y,range(g))))))) -> ((f ⊂ g) v (g ⊂ f))
 4. (Function(f) & (Function(g) & ((domain(f) = domain(g)) & (f ⊂ g)))) -> (f = g)
 
-Succesfully checked 71 theorems with a total of 10119 lines in 55 seconds.
+Succesfully checked 71 theorems with a total of 10119 lines in 28 seconds (on i5 Quad-Core).
