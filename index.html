@@ -190,6 +190,117 @@ Here is a general introduction to PyLog (which does not yet discuss Z2).<br>
      <p class="foot"> </p>  </div>
      <br><br> 
     
+   <div class="center">
+     <p><h3>PyHott </h3></p>
+     <p class="des"></p>
+     <p> PyHott is a sister program of PyLog. It is based on homotopy type theory as presented in the apendix of the 'Hott Book'.
+	     In Univalent projects using Agda, type checking is automatic. PyHott is just a minimalist type inference assistant in the
+	     vein of PyLog. Thus given a typing of a term it will not tell you if it is correct. It will only tell you if a given type inference 
+	     of such a typing is correct. <br>
+	     
+	     
+	   
+
+</p>
+     <p class="foot"> </p>  </div>
+     <br><br> 
+    
+ <div class="center"><p><h3>  Identity in PyHott</h3></p><p class="des"></p><p>    <pre style="text-size:20px">
+
+0.  ⊢   CtxEmp 
+1.  ⊢ U0 : U1  UIntro 0
+2. A : U0 ⊢   CtxExt 1
+3. A : U0 ⊢ A : U0  Vble 2
+4. A : U0, a : A ⊢   CtxExt 3
+5. A : U0, a : A ⊢ A : U0  Vble 4
+6. A : U0, a : A, x : A ⊢   CtxExt 5
+7. A : U0, a : A, x : A ⊢ x : A  Vble 6
+8. A : U0, a : A ⊢ a : A  Vble 4
+9. A : U0, a : A ⊢ λ(x:A)x a ≡ a : A  PiComp 7 8
+10. A : U0, x : A ⊢   CtxExt 3
+11. A : U0, x : A ⊢ A : U0  Vble 10
+12. A : U0 ⊢ (x:A) -> A : U0  PiForm 3 11
+13. A : U0, y : (x:A) -> A ⊢   CtxExt 12
+14. A : U0, y : (x:A) -> A ⊢ A : U0  Vble 13
+15. A : U0, y : (x:A) -> A, a : A ⊢   CtxExt 14
+16. A : U0, y : (x:A) -> A, a : A ⊢ y : (x:A) -> A  Vble 15
+17. A : U0, y : (x:A) -> A, a : A ⊢ a : A  Vble 15
+18. A : U0, y : (x:A) -> A, a : A ⊢ y a : A  PiElim 16 17
+19. A : U0, x : A ⊢   CtxExt 3
+20. A : U0, x : A ⊢ x : A  Vble 19
+21. A : U0 ⊢ λ(x:A)x : (x:A) -> A  PiIntro 20
+22.  ⊢ λ(A:U0)λ(x:A)x : (A:U0) -> (x:A) -> A  PiIntro 21
+
+>>> NewDef(22,"id")
+id := λ(A:U0)λ(x:A)x : (A:U0) -> (x:A) -> A
+
+23. C : U0, A : U0 ⊢ λ(x:A)x : (x:A) -> A  Wkg1 1 21
+24. C : U0 ⊢   CtxExt 1
+25. C : U0 ⊢ C : U0  Vble 24
+26. C : U0 ⊢ λ(A:U0)λ(x:A)x C ≡ λ(x:C)x : (x:C) -> C  PiComp 23 25
+27. C : U0 ⊢   CtxExt 1
+28. C : U0 ⊢ C : U0  Vble 27
+29. C : U0, x : C ⊢   CtxExt 28
+30. C : U0, x : C ⊢ C : U0  Vble 29
+31. C : U0 ⊢ (x:C) -> C : U0  PiForm 28 30
+32. C : U0, y : (x:C) -> C ⊢   CtxExt 31
+33. C : U0, y : (x:C) -> C ⊢ C : U0  Vble 32
+34. C : U0, y : (x:C) -> C, a : C ⊢   CtxExt 33
+35. C : U0, y : (x:C) -> C, a : C ⊢ y : (x:C) -> C  Vble 34
+36. C : U0, y : (x:C) -> C, a : C ⊢ a : C  Vble 34
+37. C : U0, y : (x:C) -> C, a : C ⊢ y a : C  PiElim 35 36
+38. C : U0, a : C ⊢ λ(A:U0)λ(x:A)x C a ≡ λ(x:C)x a : C  Subst3 26 37
+39. C : U0, a : C ⊢   CtxExt 28
+40. C : U0, a : C ⊢ C : U0  Vble 39
+41. C : U0, a : C, x : C ⊢   CtxExt 40
+42. C : U0, a : C, x : C ⊢ x : C  Vble 41
+43. C : U0, a : C ⊢ a : C  Vble 39
+44. C : U0, a : C ⊢ λ(x:C)x a ≡ a : C  PiComp 42 43
+45. C : U0, a : C ⊢ λ(A:U0)λ(x:A)x C a ≡ a : C  Trans 38 44
+46. C : U0, a : C ⊢ id C a ≡ a : C  DefInt 45
+</pre></p>
+     <p class="foot">Monday 28th March 2022 
+  </p>
+     <br> </div><br><br> <div class="center"><p><h3>  Homotopy defined in PyHott</h3></p><p class="des"></p><p>    <pre style="text-size:20px">
+
+0.  ⊢   CtxEmp 
+1.  ⊢ U0 : U1  UIntro 0
+2. A : U0 ⊢   CtxExt 1
+3. A : U0 ⊢ U0 : U1  UIntro 2
+4. A : U0, B : U0 ⊢   CtxExt 3
+5. A : U0, B : U0 ⊢ A : U0  Vble 4
+6. A : U0, B : U0, x : A ⊢   CtxExt 5
+7. A : U0, B : U0, x : A ⊢ B : U0  Vble 6
+8. A : U0, B : U0 ⊢ (x:A) -> B : U0  PiForm 5 7
+9. A : U0, B : U0, f : (x:A) -> B ⊢   CtxExt 8
+10. A : U0, B : U0, g : (x:A) -> B ⊢ (x:A) -> B : U0  Wkg1 8 8
+11. A : U0, B : U0, g : (x:A) -> B, f : (x:A) -> B ⊢   CtxExt 10
+12. A : U0, B : U0, g : (x:A) -> B, f : (x:A) -> B ⊢ A : U0  Vble 11
+13. A : U0, B : U0, g : (x:A) -> B, f : (x:A) -> B, x : A ⊢   CtxExt 12
+14. A : U0, B : U0, g : (x:A) -> B, f : (x:A) -> B, x : A ⊢ x : A  Vble 13
+15. A : U0, B : U0, g : (x:A) -> B, f : (x:A) -> B, x : A ⊢ f : (x:A) -> B  Vble 13
+16. A : U0, B : U0, g : (x:A) -> B, f : (x:A) -> B, x : A ⊢ f x : B  PiElim 15 14
+17. A : U0, B : U0, g : (x:A) -> B, f : (x:A) -> B, x : A ⊢ g : (x:A) -> B  Vble 13
+18. A : U0, B : U0, g : (x:A) -> B, f : (x:A) -> B, x : A ⊢ g x : B  PiElim 17 14
+19. A : U0, B : U0, g : (x:A) -> B, f : (x:A) -> B, x : A ⊢ B : U0  Vble 13
+20. A : U0, B : U0, g : (x:A) -> B, f : (x:A) -> B, x : A ⊢ equals B f x g x : U0  EqForm 19 16 18
+21. A : U0, B : U0, g : (x:A) -> B, f : (x:A) -> B ⊢ A : U0  Vble 11
+22. A : U0, B : U0, g : (x:A) -> B, f : (x:A) -> B ⊢ (x:A) -> equals B f x g x : U0  PiForm 21 20
+23. A : U0, B : U0, g : (x:A) -> B ⊢ (f:(x:A) -> B) -> (x:A) -> equals B f x g x : U0  PiForm 10 22
+24. A : U0, B : U0 ⊢ (g:(x:A) -> B) -> (f:(x:A) -> B) -> (x:A) -> equals B f x g x : U0  PiForm 8 23
+25. A : U0, B : U0 ⊢ (g:(x:A) -> B) -> (f:(x:A) -> B) -> (x:A) -> equals B f x g x : U1  UCumul 24
+26. A : U0 ⊢ (B:U0) -> (g:(x:A) -> B) -> (f:(x:A) -> B) -> (x:A) -> equals B f x g x : U1  PiForm 3 25
+27.  ⊢ (A:U0) -> (B:U0) -> (g:(x:A) -> B) -> (f:(x:A) -> B) -> (x:A) -> equals B f x g x : U1  PiForm 1 26
+
+hot := (A:U0) -> (B:U0) -> (g:(x:A) -> B) -> (f:(x:A) -> B) -> (x:A) -> equals B f x g x 
+
+28.  ⊢ hot : U1  DefInt 27
+
+</pre></p>
+     <p class="foot">Saturday 26th March 2022 
+  </p>
+     <br> </div>
+
     
   <br>
   <br>
